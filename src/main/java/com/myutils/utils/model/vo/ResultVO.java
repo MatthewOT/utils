@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
  * @create: 2019-10-21 17:40
  **/
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ResultVO {
     private Integer code;
     private Object data;
