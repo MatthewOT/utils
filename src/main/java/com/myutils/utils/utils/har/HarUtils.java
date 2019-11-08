@@ -22,7 +22,7 @@ public class HarUtils {
     private static final Logger logger = LoggerFactory.getLogger(HarUtils.class);
 
     //加载har文件
-    public JSONArray loadHarFile(String harFile) throws Exception {
+    public JSONObject loadHarFile(String harFile) throws Exception {
 
         //获取文件名
         String fileName = FilenameUtils.getName(harFile);
@@ -40,7 +40,7 @@ public class HarUtils {
             JSONObject temp = (JSONObject) jsonObj.get("log");
             JSONArray entity = (JSONArray) temp.get("entries");
             logger.info("获取entity成功{}",entity.toJSONString());
-            return entity;
+            return (JSONObject) entity.get(0);
 
 
     }

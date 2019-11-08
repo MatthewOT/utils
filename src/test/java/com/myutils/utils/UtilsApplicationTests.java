@@ -1,5 +1,7 @@
 package com.myutils.utils;
 
+import com.alibaba.fastjson.JSONObject;
+import com.myutils.utils.utils.har.HarParser;
 import com.myutils.utils.utils.har.HarUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +21,10 @@ public class UtilsApplicationTests {
     @Test
     public void harIoTest() throws Exception {
         HarUtils harUtils = new HarUtils();
-        harUtils.loadHarFile("D:\\tools\\utils\\src\\main\\java\\com\\myutils\\utils\\utils\\har\\demo.har");
+        JSONObject entity = harUtils.loadHarFile("D:\\tools\\utils\\src\\main\\java\\com\\myutils\\utils\\utils\\har\\demo.har");
+        HarParser harParser = new HarParser();
+        harParser.getRequestMethod(entity);
+        harParser.getRequestUrl(entity);
     }
 
 }

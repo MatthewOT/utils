@@ -1,7 +1,10 @@
 package com.myutils.utils.utils.har;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 /**
  * @program: utils
@@ -32,16 +35,40 @@ public class HarParser {
             ":scheme",
             ":path"};
 
-    void getRequestUrl(){}
-    void getRequestHeaders(){}
-    void getRequestMethod(){}
-    void getRequestData(){}
-    void getValidate(){}
-    void getTeststep(){}
-    void getConfig(){}
-    void getTeststeps(){}
+    public void getRequestUrl(JSONObject entity){
+
+        //获取url
+        String url = (String) ((JSONObject)entity.get("request")).get("url");
+        logger.info("请求url为：{}",url);
+        //这里有问题
+        Object requestParams = ((JSONObject)entity.get("request")).get("queryString");
+    }
+
+    public void getRequestHeaders(JSONObject entity){
+        //获取headers,遍历时可能需要将其转换成map
+        JSONArray headers = (JSONArray)((JSONObject)entity.get("request")).get("headers");
+
+    }
+
+    public void getRequestMethod(JSONObject entity){
+        //获取method
+        String method = (String) ((JSONObject)entity.get("request")).get("method");
+        logger.info("该请求方法为{}",method);
+    }
+
+    public void getRequestData(JSONObject entity){
+
+    }
+
+    public void getValidate(JSONObject entity){}
+
+    public void getTeststep(JSONObject entity){}
+
+    public void getConfig(JSONObject entity){}
+
+    public void getTeststeps(){}
     //从har中提取参数并准备case文件
-    void makeTestcase(){}
+    public void makeTestcase(){}
     //生成case文件
-    void generateTestcase(){}
+    public void generateTestcase(){}
 }
